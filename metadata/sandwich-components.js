@@ -1,5 +1,6 @@
 export default {
     'breads': {
+        id: 'breads',
         'white': {
             id: 'white',
 
@@ -18,6 +19,7 @@ export default {
         }
     },
     'greens': {
+        id: 'greens',
         'spinach': {
             id: 'spinach',
 
@@ -36,6 +38,7 @@ export default {
         }
     },
     'meats': {
+        id: 'meats',
         'turkey': {
             id: 'turkey',
 

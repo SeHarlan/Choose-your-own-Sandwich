@@ -20,7 +20,7 @@ form.addEventListener('submit', (event) => {
 
     setObjectData(newUser);
 
-    //link adventure
+    window.location = './adventure';
 
 });
 
