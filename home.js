@@ -1,5 +1,5 @@
 
-
+import { setObjectData } from './utils/user-api.js'
 //dom
 const form = document.querySelector('form');
 // const usernameHeader = document.getElementById('username-header');
@@ -11,11 +11,15 @@ form.addEventListener('submit', (event) => {
 
     const userName = formData.get('username');
     const munchType = formData.get('type-of-munch');
+    const munchId = getMunchId(munchType);
 
     const newUser = {
         id: userName,
         munchType: munchType,
-        hp: 50
+        munchId: munchId,
+        carn: 0,
+        veg: 0,
+        omni: 0
     };
 
     setObjectData(newUser);
@@ -27,20 +31,11 @@ form.addEventListener('submit', (event) => {
 
 
 
-function setObjectData(object) {
-    if (!object.id) return;
-    const currentUser = object.id;
-    localStorage.setItem('CURRENT', currentUser);
-
-    let userMap;
-    const mapData = localStorage.getItem('USERS');
-    const oldMap = JSON.parse(mapData);
-    if (!mapData) {
-        userMap = { [currentUser]: object };
-    } else {
-        userMap = { ...oldMap, [currentUser]: object };
-    }
-
-    const stringyData = JSON.stringify(userMap);
-    localStorage.setItem('USERS', stringyData);
+function getMunchId(munchType) {
+    let munchId;
+    if (munchType === 'Vegitarian') munchId = 'veg';
+    if (munchType === 'Carnivore') munchId = 'carn';
+    if (munchType === 'Omnivore') munchId = 'omni';
+    return munchId;
 }
+

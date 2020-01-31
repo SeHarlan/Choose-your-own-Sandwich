@@ -20,3 +20,21 @@ export function getCurrentUser() {
     const currentUser = userMap[userId];
     return currentUser;
 }
+
+export function setObjectData(object) {
+    if (!object.id) return;
+    const currentUser = object.id;
+    localStorage.setItem('CURRENT', currentUser);
+
+    let userMap;
+    const mapData = localStorage.getItem('USERS');
+    const oldMap = JSON.parse(mapData);
+    if (!mapData) {
+        userMap = { [currentUser]: object };
+    } else {
+        userMap = { ...oldMap, [currentUser]: object };
+    }
+
+    const stringyData = JSON.stringify(userMap);
+    localStorage.setItem('USERS', stringyData);
+}
