@@ -5,7 +5,7 @@ export function loadRenderUsername(parentTag) {
 
     const username = currentUser.id;
     const userMunch = currentUser.munchType;
-    const userInfo = `${username}, the ${userMunch}`;
+    const userInfo = `${username}, ${userMunch}`;
 
     const pTag = document.createElement('p');
     pTag.textContent = userInfo;

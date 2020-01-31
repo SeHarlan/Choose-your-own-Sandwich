@@ -2,6 +2,12 @@ main {
     text-align: center;
 }
 
+.completed {
+    text-decoration: line-through;
+    pointer-events: none;
+    cursor: default;
+}
+
 a {
     display: block;
     margin-top: 50px;
@@ -11,6 +17,7 @@ section {
     border: 4px double white;
     border-radius: 10px;
     margin: 20px;
+    display: none;
 }
 
 form {

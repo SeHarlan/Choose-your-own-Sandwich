@@ -22,7 +22,6 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData(form);
     const choiceId = formData.get('choice');
     const choice = currentOption.choices[choiceId];
-    console.log(choice);
     
     const currentUser = getCurrentUser();
 
@@ -32,21 +31,11 @@ form.addEventListener('submit', (event) => {
 
     setObjectData(currentUser);
 
-    //display local results
-    const pTag = document.createElement('p');
-    const resultText = getResultText();
-    pTag.textContent = `You have chosen ${choice.name}, ${resultText} choice for a ${currentUser.munchType}.`;
-    resultSection.appendChild(pTag);
+    renderLocalResults(choice, currentUser);
 
-    function getResultText() {
-        let text;
-        if (currentUser.munchId !== choice.result) {
-            text = 'an interesting';
-        } else {
-            text = 'an excellent';
-        }
-        return text;
-    }
+    form.style.display = 'none';
+
+    getSetCompleted();
 
 });
 
@@ -54,7 +43,42 @@ resetButton.addEventListener('click', () => {
     window.location = './';
 });
 
+
+function getSetCompleted() {
+    let array;
+    const completeData = localStorage.getItem('DONE');
+    if (!completeData) {
+        array = [optionId];
+    }
+    else {
+        const oldArray = JSON.parse(completeData);
+        array = [...oldArray, optionId];
+    }
+    const dataToSet = JSON.stringify(array);
+    localStorage.setItem('DONE', dataToSet);
+}
+
 //functions
+
+
+function renderLocalResults(choice, currentUser) {
+    const pTag = document.createElement('p');
+    const resultText = getResultText();
+    pTag.textContent = `You have chosen ${choice.name}, ${resultText} choice for ${currentUser.munchType}.`;
+    resultSection.appendChild(pTag);
+    resultSection.style.display = 'block';
+    function getResultText() {
+        let text;
+        if (currentUser.munchId !== choice.result) {
+            text = 'an interesting';
+        }
+        else {
+            text = 'an excellent';
+        }
+        return text;
+    }
+}
+
 function increaseScore(choice, currentUser, scoreType) {
     if (choice.result === scoreType) {
         currentUser[scoreType]++;
@@ -62,6 +86,7 @@ function increaseScore(choice, currentUser, scoreType) {
 }
 
 function renderOption(option) {
+    form.style.display = 'flex';
     renderHeader(option);
     propagateForm(option);
 }
