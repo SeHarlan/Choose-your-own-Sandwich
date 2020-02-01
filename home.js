@@ -33,7 +33,7 @@ form.addEventListener('submit', (event) => {
 
 function getMunchId(munchType) {
     let munchId;
-    if (munchType === 'a Vegitarian') munchId = 'veg';
+    if (munchType === 'a Vegetarian') munchId = 'veg';
     if (munchType === 'a Carnivore') munchId = 'carn';
     if (munchType === 'an Omnivore') munchId = 'omni';
     return munchId;

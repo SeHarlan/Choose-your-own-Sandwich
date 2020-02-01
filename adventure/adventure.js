@@ -10,20 +10,22 @@ loadRenderUsername('header');
 
 const completedArray = JSON.parse(localStorage.getItem('DONE'));
 
-if (completedArray.length >= 3) {
-    window.location = '../results';
-} else {
-    completedArray.forEach(item => {
-        if (item === breads.id) {
-            breads.className = 'completed';
-        }
-        if (item === greens.id) {
-            greens.className = 'completed';
-        }
-        if (item === meats.id) {
-            meats.className = 'completed';
-        }
-    });
+if (completedArray) {
+    if (completedArray.length >= 3) {
+        window.location = '../results';
+    } else {
+        completedArray.forEach(item => {
+            if (item === breads.id) {
+                breads.className = 'completed';
+            }
+            if (item === greens.id) {
+                greens.className = 'completed';
+            }
+            if (item === meats.id) {
+                meats.className = 'completed';
+            }
+        });
+    }
 }
 
 

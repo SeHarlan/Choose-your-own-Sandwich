@@ -1,4 +1,34 @@
+html, body {
+    width: 100%;
+}
+
 section {
     text-align: center;
     padding: 30px;
+}
+
+header {
+    width: 90%;
+    margin: 20px auto;
+}
+
+header p {
+    display: none;
+}
+header h1 {
+    margin: 0 auto;
+}
+
+p:first-child {
+    font-size: larger;
+    text-decoration: underline;
+}
+
+
+button {
+    width: 200px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+
 }

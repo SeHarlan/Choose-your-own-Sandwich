@@ -5,6 +5,7 @@ import optionsMap from '../metadata/sandwich-components.js';
 const form = document.querySelector('form');
 const resetButton = document.getElementById('reset-button');
 const resultSection = document.querySelector('section');
+const image = document.querySelector('img');
 
 //global variables
 const searchParams = new URLSearchParams(window.location.search);
@@ -94,6 +95,15 @@ function renderOption(option) {
 function renderHeader(option) {
     const headerEl = document.querySelector('h2');
     headerEl.textContent = option.name;
+    if (option.name === 'Greens') {
+        image.src = '../assets/lettuce.JPG';
+    } 
+    if (option.name === 'Bread') {
+        image.src = '../assets/bread.JPG';
+    }
+    if (option.name === 'Meat') {
+        image.src = '../assets/bread.JPG';
+    }
 }
 
 function propagateForm(option) {
